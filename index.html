@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Promedio</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <h1>Calculadora de Promedio</h1>
+
+    <form id="formulario">
+        <label for="calificacion1">Calificación 1:</label>
+        <input type="number" id="calificacion1" required>
+
+        <label for="calificacion2">Calificación 2:</label>
+        <input type="number" id="calificacion2" required>
+
+        <label for="calificacion3">Calificación 3:</label>
+        <input type="number" id="calificacion3" required>
+
+        <button type="button" onclick="calcularPromedio()">Calcular Promedio</button>
+        <button type="button" onclick="borrarOperacion()">Borrar Operación</button>
+        <button type="button" onclick="borrarResultado()">Borrar Resultado</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script src="main.js"></script>
+</body>
+</html>
