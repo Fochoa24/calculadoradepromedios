@@ -9,8 +9,6 @@
 <body>
     <h1>Calculadora de Promedio</h1>
 
-    
-
     <form id="formulario">
         <label for="calificacion1">Calificación 1:</label>
         <input type="number" id="calificacion1" required>
@@ -21,13 +19,11 @@
         <label for="calificacion3">Calificación 3:</label>
         <input type="number" id="calificacion3" required>
 
-        
-
-       
         <button type="button" onclick="calcularPromedio()">Calcular</button>
         <button type="button" onclick="borrarResultado()">Reiniciar</button>
     </form>
 
+    <div id="mensaje" class="mensaje"></div>
     <p id="resultado"></p>
 
     <script src="main.js"></script>
