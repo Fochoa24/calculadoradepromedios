@@ -4,8 +4,18 @@ function Alumno(nombre, calificaciones) {
     this.calificaciones = calificaciones;
 }
 
-// Crear un array para almacenar instancias de Alumno
-const listaAlumnos = [];
+
+
+// Cargar la lista de alumnos desde LocalStorage al inicio
+const storedAlumnos = localStorage.getItem('listaAlumnos');
+const listaAlumnos = storedAlumnos ? JSON.parse(storedAlumnos) : [];
+
+    function guardarListaAlumnosEnLocalStorage(){
+        // Guardar lista de alumnos en localstorage
+        localStorage.setItem('listaAlumnos', JSON.stringify(listaAlumnos));
+    }
+
+
 
 // Agregar algunos estudiantes a la lista
 listaAlumnos.push(new Alumno("Estudiante1", [8, 9, 7]));
@@ -58,6 +68,8 @@ function borrarResultado() {
     calificacion1Element.value = "";
     calificacion2Element.value = "";
     calificacion3Element.value = "";
+    // Guardar la lista de alumnos en el localstorage despues de borrar
+    guardarListaAlumnosEnLocalStorage();
 }
 
 function borrarOperacion() {
@@ -65,3 +77,8 @@ function borrarOperacion() {
     calificacion2Element.value = "";
     calificacion3Element.value = "";
 }
+
+
+// Deteccion de eventos
+document.getElementById('calcularBtn').addEventListener('click', calcularPromedio);
+document.getElementById('reiniciarBtn').addEventListener('click', borrarResultado);
