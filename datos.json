@@ -1,0 +1,6 @@
+[
+    { "nombre": "Estudiante1", "calificaciones": [8, 9, 7] },
+    { "nombre": "Estudiante2", "calificaciones": [6, 8, 7] },
+    { "nombre": "Estudiante3", "calificaciones": [9, 10, 8] }
+  ]
+  

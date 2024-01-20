@@ -78,7 +78,36 @@ function borrarOperacion() {
     calificacion3Element.value = "";
 }
 
+// Nueva función para cargar datos desde un JSON local
+function cargarDatosDesdeJSON() {
+    return new Promise((resolve, reject) => {
+        axios.get('datos.json') // Reemplaza 'datos.json' con la ruta correcta a tu archivo JSON
+            .then(response => {
+                // Procesar los datos obtenidos
+                const datos = response.data;
+                // Actualizar la lista de alumnos con los datos del JSON
+                listaAlumnos.length = 0; // Limpiar la lista actual
+                datos.forEach(alumno => {
+                    listaAlumnos.push(new Alumno(alumno.nombre, alumno.calificaciones));
+                });
+                // Guardar la lista actualizada en el local storage
+                guardarListaAlumnosEnLocalStorage();
+                resolve();
+            })
+            .catch(error => {
+                console.error('Error al cargar los datos:', error);
+                reject(error);
+            });
+    });
+}
 
-// Deteccion de eventos
+
+
+// Detección de eventos
 document.getElementById('calcularBtn').addEventListener('click', calcularPromedio);
 document.getElementById('reiniciarBtn').addEventListener('click', borrarResultado);
+
+// Llamada a la función para cargar datos al inicio
+cargarDatosDesdeJSON()
+    .then(() => console.log('Datos cargados exitosamente'))
+    .catch(() => console.error('Error al cargar los datos'));
